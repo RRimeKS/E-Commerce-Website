@@ -1,0 +1,10 @@
+<nav style="--bs-breadcrumb-divider: '';" aria-label="breadcrumb">
+    <ol class="breadcrumb d-flex align-items-center justify-content-center">
+        <% categories.forEach(category=> { %>
+            <li class="breadcrumb-item"><a href="/category/<%= category.slug %>">
+                    <%= category.name %>
+                </a>
+            </li>
+            <% }) %>
+    </ol>
+</nav>

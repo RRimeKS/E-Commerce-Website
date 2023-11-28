@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<%- include('../partials/head') %>
+
+    <body>
+        <div class="container">
+            <%- include('../partials/navbar') %>
+
+                <div class="row">
+                    <div class="col">
+                        <div class="form-wrapper p-5">
+                            <form method="post" enctype="multipart/form-data">
+                                <input type="hidden" name="userId" value="<%= user._id %>">
+                                <div class="mb-3">
+                                    <label for="name" class="form-label">Ad- Soyad</label>
+                                    <input name="name" class="form-control" type="text" value="<%= user.name %>">
+                                </div>
+                                <div class="mb-3">
+                                    <label for="email" class="form-label">E-posta</label>
+                                    <input name="email" class="form-control" type="email" value="<%= user.email %>">
+                                </div>
+                                <div class="mb-3">
+                                    <label for="profileImage" class="form-label">Profile Resmi</label>
+                                    <input name="profileImage" class="form-control" type="file">
+                                </div>
+                                <div class="mb-3">
+                                    <label for="name" class="form-label">Rol | mevcut rol: <b>
+                                            <%= user.role %>
+                                        </b></label>
+                                    <select class="form-select" name="role">
+                                        <option selected value="<%= user.role %>">Roller</option>
+                                        <option value="User">User</option>
+                                        <option value="Manager">Manager</option>
+                                        <option value="Admin">Admin</option>
+                                    </select>
+                                </div>
+                                <div class="mb-3">
+                                    <input class="btn btn-primary" type="submit" value="Güncelle">
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+        </div>
+
+    </body>
+    <%- include('../partials/script') %>
+
+</html>

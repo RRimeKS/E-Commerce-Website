@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <%- include('../partials/head') %>
+</head>
+<body>
+    <%- include('../partials/navbar') %>
+
+    <div class="container">
+        <div class="row">
+            <div class="alert alert-warning text-center mt-5">
+                <h3>!* <%= category.name %> *!<br></h3>
+                <p>adlı kategoriyi silmek üzeresiniz.</p>
+                <form method="post">
+                    <input type="hidden" value="<%= category._id %>" name="id">
+                    <a href="/categories" class="btn btn-primary">Vazgeç</a>
+                    <button type="submit" class="btn btn-danger">Onayla</button>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <%- include('../partials/script') %>
+</body>
+</html>

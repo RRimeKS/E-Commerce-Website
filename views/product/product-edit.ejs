@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <%- include('../partials/head') %>
+        <style>
+            .col {
+                position: relative;
+            }
+
+            img {
+                width: 25%;
+                margin-top: 12px;
+                max-height: 100px;
+                object-fit: cover;
+            }
+        </style>
+</head>
+
+<body>
+    <%- include('../partials/navbar') %>
+
+        <div class="container mt-5 mb-5">
+            <div class="row">
+                <div class="col bg-primary">
+                    <form method="post" enctype="multipart/form-data">
+                        <input type="hidden" name="id" value="<%= product._id %>">
+
+                        <div class="mb-3">
+                            <label for="title" class="form-label">Ürün Başlığı</label>
+                            <input type="text" class="form-control" name="title" value="<%= product.title %>">
+                        </div>
+
+                        <div class="mb-3">
+                            <label for="description" class="form-label">Ürün Açıklaması</label>
+                            <textarea name="description" id="editor"><%= product.description %></textarea>
+                        </div>
+
+                        <div class="mb-3">
+                            <label for="quantity" class="form-label">Ürün Miktarı</label>
+                            <input type="text" class="form-control" name="quantity" value="<%= product.quantity %>">
+                        </div>
+
+                        <div class="mb-3">
+                            <label for="price" class="form-label">Ürün Fiyatı</label>
+                            <input type="text" class="form-control" name="price" value="<%= product.price %>">
+                        </div>
+
+                        <div class="mb-3">
+                            <label for="color" class="form-label">Ürün Rengi</label>
+                            <select class="form-select" name="color" aria-label="Default select example">
+                                <option selected value="<%= product.color %>">
+                                    <%= product.color %>
+                                </option>
+                                <option value="Kırmızı">Kırmızı</option>
+                                <option value="Mavi">Mavi</option>
+                                <option value="Yeşil">Yeşil</option>
+                                <option value="Turuncu">Turuncu</option>
+                                <option value="Kahverengi">Kahverengi</option>
+                                <option value="Siyah">Siyah</option>
+                                <option value="Beyaz">Beyaz</option>
+                                <option value="Pembe">Pembe</option>
+                                <option value="Mor">Mor</option>
+                                <option value="Sarı">Sarı</option>
+                            </select>
+                        </div>
+
+                        <div class="mb-3">
+                            <label for="category" class="form-label">Ürün Kategorisi (Mevcut kategori: <b>
+                                    <%= selectedCategory[0].name %>
+                                </b>)</label>
+                            <select class="form-select" name="category" aria-label="Default select example">
+                                <option selected value="null">Bir kategori seçiniz</option>
+                                <% categories.forEach(category=> { %>
+                                    <option value="<%= category._id %>">
+                                        <%= category.name %>
+                                    </option>
+                                    <% }) %>
+                            </select>
+                        </div>
+
+                        <div class="mb-3">
+                            <label for="imageCover" class="form-label">Ürün Kapak resmi: </label>
+                            <img src="/uploads/<%= product.imageCover %>" alt="<%= product.imageCover %>" class="mb-4">
+                            <input type="file" name="imageCover" class="form-control">
+                        </div>
+
+                        <div class="col-auto mb-3">
+                            <button type="submit" class="btn btn-dark mt-3">Güncelle</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+
+        <%- include('../partials/script') %>
+</body>
+
+</html>

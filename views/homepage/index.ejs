@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<%- include('../partials/head') %>
+    <style>
+        .card-wrapper {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+        }
+
+        .carousel-item {
+            height: 500px
+        }
+    </style>
+
+    <body>
+        <div class="container">
+            <div class="header">
+                <%- include('../partials/navbar') %>
+            </div>
+
+            <div class="row main-area">
+                <div class="col-lg-2 mt-3">
+                    <%- include('../partials/category-menu', categories) %>
+
+                </div>
+                <div class="col-lg-8 bg-primary mt-3">
+                    <h1 class="h2 mt-4">
+                        <%= title %>
+                    </h1>
+                    <% if (products.length==0) { %>
+
+                        <%- include('../partials/404') %>
+
+                            <% } else { %>
+                                <%- include('../partials/slider', products) %>
+                                    <div class="card-wrapper mt-3">
+                                        <% products.forEach(product=> { %>
+                                            <div class="card mb-3 w-75" style="width: 18rem;">
+                                                <input type="hidden" id="product-id" name="productId"
+                                                    value="<%= product._id%>">
+                                                <a href="/urun/<%= product.slug %>">
+                                                    <img src="/uploads/<%= product.imageCover %>" class="card-img-top">
+                                                </a>
+                                                <div class="card-body text-center">
+                                                    <div class="col">
+                                                        <div class="col-md-12">
+                                                            <p class="card-title">
+                                                                <%= product.title %>
+                                                            </p>
+                                                        </div>
+                                                        <div class="col-md-12">
+                                                            <div class="border-bottom mt-3 mb-3 w-100"></div>
+                                                            <p class="price">
+                                                                <%= product.price %>TL
+                                                            </p>
+                                                            <div class="border-bottom mt-3 mb-3 w-100"></div>
+                                                        </div>
+
+                                                        <% if (isAuth) { %>
+                                                            <div class="col-md-12">
+                                                                <button title="" class="btn btn-primary btn-add">Sepete
+                                                                    ekle</button>
+                                                            </div>
+                                                            <% } else { %>
+                                                                <div class="col-md-12">
+                                                                    <button class="btn btn-primary btn-add disabled"
+                                                                        id="">
+                                                                        Sepete eklemek için giriş yapınız</button>
+                                                                </div>
+                                                                <% } %>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <% }) %>
+                                    </div>
+                                    <% } %>
+
+                </div>
+
+                <div class="col-lg-2 mt-3">
+                    <%- include('../partials/category-menu', categories) %>
+                </div>
+
+            </div>
+        </div>
+    </body>
+
+    <%- include('../partials/script') %>
+
+</html>

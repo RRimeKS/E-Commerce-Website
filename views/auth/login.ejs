@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<%- include('../partials/head') %>
+    <style>
+        .signin-wrapper {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 80vh;
+        }
+    </style>
+
+    <body>
+
+        <div class="container">
+            <%- include('../partials/navbar') %>
+
+                <% if (typeof message !="undefined" ) { %>
+                    <div class="alert-wrapper mt-5 d-flex justify-content-center align-items-center w-100">
+                        <div class="alert alert-<%= message.class %>">
+                            <%= message.text %>
+                        </div>
+                    </div>
+                    <% } %>
+
+                        <form method="post">
+                            <div class="signin-wrapper">
+                                <div class="form-signin">
+                                    <h1 class="h4 mb-3 fw-normal">Petexpress.com</h1>
+                                    <div class="form-floating ">
+                                        <input type="email" name="email" class="form-control">
+                                        <label for="floatingInput">Eposta</label>
+                                    </div>
+                                    <div class="form-floating mt-1">
+                                        <input type="password" name="password" class="form-control">
+                                        <label for="floatingInput">Parola</label>
+                                    </div>
+
+                                    <div class="form-floating mt-5">
+                                        <a href="/reset-password" class="form-link ">Şifremi unuttum</a>
+                                        <a href="/signup" class="form-link">Hesap oluştur</a>
+                                    </div>
+
+                                    <div class="form-floating mt-5">
+                                        <input type="submit" class="btn btn-primary" value="Giriş Yap">
+                                    </div>
+
+                                </div>
+                            </div>
+                        </form>
+        </div>
+
+    </body>
+    <%- include('../partials/script') %>
+
+</html>

@@ -1,0 +1,14 @@
+<div class="card" style="width: 18rem;">
+  <a href="/product/<%= product.slug %>">
+    <img src="/uploads/<%= product.imageCover %>" class="card-img-top">
+  </a>
+  <div class="card-body text-center">
+    <p class="card-text">
+      <%= product.title %>
+    </p>
+    <p>
+      <%= product.price %>TL
+    </p>
+    <button class="btn btn-primary btn-add">Sepete ekle</button>
+  </div>
+</div>

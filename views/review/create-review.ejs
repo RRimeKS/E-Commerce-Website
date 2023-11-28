@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <%- include('../partials/head') %>
+</head>
+
+<body>
+    <div class="container">
+        <%- include('../partials/navbar') %>
+            <div class="row mt-5">
+                <div class="col">
+                    <table class="table table-bordered text-center">
+                        <thead>
+                            <tr>
+                                <th>Resim</th>
+                                <th>Başlık</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>
+                                    <img style="width: 150px; border-radius: 30px;"
+                                        src="/uploads/<%= product.imageCover %>" alt="<%= product.imageCover %>">
+                                </td>
+                                <td>
+                                    <%= product.title %>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+
+                    <div class="reviews">
+                        <form method="post">
+                            <input type="hidden" name="productId" value="<%= product._id %>">
+                            <div class="form-floating mt-2 mb-2">
+                                <input type="text" name="text" class="form-control">
+                                <div class="mb-3 mt-2">
+                                    <select class="form-select" name="rating" aria-label="Default select example">
+                                        <option selected>Kaç puan ?</option>
+                                        <option value="1">1</option>
+                                        <option value="2">2</option>
+                                        <option value="3">3</option>
+                                        <option value="4">4</option>
+                                        <option value="5">5</option>
+                                    </select>
+                                </div>
+                                <label for="floatingInput">Yorum</label>
+                            </div>
+                            <input class="btn btn-primary" type="submit" value="Yorum yap">
+                        </form>
+                    </div>
+                </div>
+            </div>
+    </div>
+
+    <%- include('../partials/script') %>
+</body>
+
+</html>

@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <%- include('../partials/head') %>
+</head>
+
+<body>
+    <div class="container">
+        <%- include('../partials/navbar') %>
+            <div class="row mt-5">
+                <div class="col">
+                    <table class="table table-bordered text-center">
+                        <thead>
+                            <tr>
+                                <th>#</th>
+                                <th>Resim</th>
+                                <th>Başlık</th>
+                                <th>İşlem</th>
+                            </tr>
+                        </thead>
+                        <div class="bar d-flex justify-content-around align-items-center bg-primary p-2">
+                            <h5 class="text-center">Toplam ürün
+                                sayısı: <%= productCount %>
+                            </h5>
+                            <form role="search">
+                                <div class="search--wrapper w-25 d-flex">
+                                    <input class="form-control me-2" type="search" placeholder="Search"
+                                        aria-label="Search">
+                                    <button class="btn btn-dark" type="submit">bul</button>
+                                </div>
+                            </form>
+                            <select class="form-select w-auto" name="category" aria-label="Default select example">
+                                <option selected>Sıralama</option>
+                                <option value="">A'dan - Z'ye doğru sırala</option>
+                                <option value="">Z'den - A'ya doğru sırala</option>
+                            </select>
+                        </div>
+                        <tbody>
+                            <% products.forEach(product=> { %>
+                                <tr>
+                                    <td>
+                                        <%= product._id %>
+                                    </td>
+                                    <td>
+                                        <img style="width: 150px; border-radius: 30px;"
+                                            src="/uploads/<%= product.imageCover %>" alt="<%= product.imageCover %>">
+                                    </td>
+                                    <td>
+                                        <a href="/urun/<%= product.slug %>">
+                                            <%= product.title %>
+                                        </a>
+                                    </td>
+                                    <td>
+                                        <a href="/delete/product/<%= product._id %>" class="btn btn-danger">Sil</a>
+                                        <a href="/edit/product/<%= product._id %>" class="btn btn-primary">Güncelle</a>
+                                    </td>
+                                </tr>
+                                <% }) %>
+                        </tbody>
+                    </table>
+                    <% if (productCount <=0) { %>
+                        <div class="alert alert-warning text-center">
+                            <h1 class="h6">Kayıtlı ürünü bulunmamaktadır.</h1>
+                        </div>
+                        <% } %>
+                </div>
+            </div>
+            <%- include('../partials/pagination') %>
+    </div>
+
+    <%- include('../partials/script') %>
+</body>
+
+</html>

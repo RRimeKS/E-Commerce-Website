@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <%- include('../partials/head') %>
+        <style>
+            .col {
+                position: relative;
+            }
+
+            img {
+                width: 100%;
+                margin-top: 12px;
+                max-height: 100px;
+                object-fit: cover;
+            }
+        </style>
+</head>
+
+<body>
+
+    <div class="container">
+        <%- include('../partials/navbar') %>
+            <div class="row mt-5">
+                <div class="col bg-danger">
+                    <form method="post" enctype="multipart/form-data">
+                        <input type="hidden" name="userid" value="<%= user._id %>">
+
+                        <div class="mb-3">
+                            <label for="name" class="form-label">Ad - Soyad</label>
+                            <input type="text" class="form-control" name="name" value="<%= user.name %>">
+                        </div>
+
+                        <div class="mb-3">
+                            <label for="email" class="form-label">E-posta</label>
+                            <input type="email" class="form-control" name="email" value="<%= user.email %>">
+                        </div>
+
+                        <div class="mb-3">
+                            <label for="role" class="form-label">Profil resmi</label>
+                            <input type="file" class="form-control" name="profileImage">
+                        </div>
+                        <div class="mb-3">
+                            <label for="category" class="form-label">Ürün Kategorisi (Mevcut kategori: <b>
+                                    <%= currentRole %>
+                                </b>)</label>
+                            <select class="form-select" name="role" aria-label="Default select example">
+                                <option selected value="<%= currentRole %>">Role seçininiz</option>
+                                <option value="Admin">Admin</option>
+                                <option value="Manager">Manager</option>
+                                <option value="User">User</option>
+
+                            </select>
+                        </div>
+
+                        <div class="col-auto mb-3">
+                            <button type="submit" class="btn btn-primary mt-3">Güncelle</button>
+                        </div>
+
+                </div>
+            </div>
+    </div>
+
+    <%- include('../partials/script') %>
+</body>
+
+</html>

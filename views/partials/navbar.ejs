@@ -1,0 +1,63 @@
+<nav class="navbar navbar-expand navbar-collapse bg-primary">
+
+  <div class="container">
+    <a href="/" class="navbar-brand">Petexpress.com</a>
+
+    <div class="collapse navbar-collapse">
+      <ul class="navbar-nav">
+        <li class="nav-item">
+          <a href="#" class="nav-link">Home</a>
+        </li>
+      </ul>
+    </div>
+
+    <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+      <% if (isAdmin || isModerator) { %>
+        <li class="nav-item dropdown">
+          <a class="text-white nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
+            aria-expanded="false">
+            Admin
+          </a>
+          <ul class="dropdown-menu">
+            <li><a class="dropdown-item" href="/users">Üyeler</a></li>
+            <li><a class="dropdown-item" href="/create/category">Kategori ekle</a></li>
+            <li><a class="dropdown-item" href="/categories">Kategoriler</a></li>
+            <li><a class="dropdown-item" href="/create/product">Ürün ekle</a></li>
+            <li><a class="dropdown-item " href="/products?page=1&limit=1">Ürünler</a></li>
+          </ul>
+        </li>
+        <% } %>
+
+          <% if (isAuth) { %>
+            <li class="nav-item">
+              <a class="text-white nav-link" href="/profile">
+                <%= name %>
+              </a>
+            </li>
+            <li class="nav-item">
+              <a class="text-white nav-link" href="/logout">
+                çıkış yap
+              </a>
+            </li>
+
+            <% } else { %>
+              <li class="nav-item">
+                <a class="text-white nav-link" href="/signin">Giriş yap</a>
+              </li>
+              <% } %>
+    </ul>
+
+    <div class="shopping-cart position-relative">
+      <button type="button" class="btn-cart btn btn-primary">
+        <i class="fas fa-shopping-cart"></i>
+        <span id="item-count" class="position-absolute top-0 badge rounded-pill bg-danger">0</span>
+      </button>
+
+      <div class="shopping-cart-list bg-primary d-none">
+        <b class="fs-5 text-white my-3">Sepet</b>
+      </div>
+    </div>
+  </div>
+
+
+</nav>

@@ -1,0 +1,55 @@
+<nav class="navbar navbar-expand-lg bg-primary d-flex justify-content-between">
+  <div class="container-fluid">
+    <div class="left">
+      <a class="navbar-brand text-white" href="/">Petexpress.com</a>
+    </div>
+
+    <div class="search">
+      <form class="d-flex" role="search">
+        <input class="form-control me-2" type="search" placeholder="Ne aramıştınız ?" aria-label="Search">
+        <button class="btn btn-dark" type="submit"><i class="fa-solid fa-magnifying-glass"></i></button>
+      </form>
+    </div>
+
+    <div class="right">
+      <div class="collapse navbar-collapse text end" id="navbarSupportedContent">
+        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+          <% if (isAdmin || isModerator) { %>
+            <li class="nav-item dropdown">
+              <a class="text-white nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
+                aria-expanded="false">
+                Admin
+              </a>
+              <ul class="dropdown-menu">
+                <li><a class="dropdown-item" href="/users">Üyeler</a></li>
+                <li><a class="dropdown-item" href="/create/category">Kategori ekle</a></li>
+                <li><a class="dropdown-item" href="/categories">Kategoriler</a></li>
+                <li><a class="dropdown-item" href="/create/product">Ürün ekle</a></li>
+                <li><a class="dropdown-item " href="/products?page=1&limit=1">Ürünler</a></li>
+              </ul>
+            </li>
+            <% } %>
+
+              <% if (isAuth) { %>
+                <li class="nav-item">
+                  <a class="text-white nav-link" href="/profile">
+                    <%= name %>
+                  </a>
+                </li>
+                <li class="nav-item">
+                  <a class="text-white nav-link" href="/logout">
+                    çıkış yap
+                  </a>
+                </li>
+
+                <% } else { %>
+                  <li class="nav-item">
+                    <a class="text-white nav-link" href="/signin">Giriş yap</a>
+                  </li>
+                  <% } %>
+        </ul>
+      </div>
+    </div>
+
+  </div>
+</nav>

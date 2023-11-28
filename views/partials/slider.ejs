@@ -1,0 +1,25 @@
+<div id="carouselExample" class="carousel slide mt-3">
+
+    <div class="carousel-inner">
+        <div class="carousel-item active">
+            <img src="/uploads/image_1696835642096-21ecc013-d552-4ba2-baf2-d193eb2e1089.jpeg %>" class="d-block w-100">
+        </div>
+        <% products.forEach(product=> { %>
+            <div class="carousel-item">
+                <a href="/urun/<%= products.slug %>">
+                    <img src="/uploads/<%= product.imageCover %>" class="d-block w-100">
+                </a>
+            </div>
+            <% }) %>
+    </div>
+
+    <button class="carousel-control-prev" type="button" data-bs-target="#carouselExample" data-bs-slide="prev">
+        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Previous</span>
+    </button>
+    <button class="carousel-control-next" type="button" data-bs-target="#carouselExample" data-bs-slide="next">
+        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Next</span>
+    </button>
+
+</div>

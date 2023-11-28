@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <%- include('../partials/head') %>
+</head>
+
+<body>
+    <div class="container">
+        <%- include('../partials/navbar') %>
+            <div class="row mt-5">
+                <div class="col">
+                    <% if (typeof message !="undefined" && message) { %>
+                        <div class="alert alert-<%= message.class %>">
+                            <%= message.text %>
+                        </div>
+                        <% } %>
+                            <table class="table table-bordered text-center">
+                                <thead>
+                                    <tr>
+                                        <th>#</th>
+                                        <th>Ad - Soyad</th>
+                                        <th>Eposta</th>
+                                        <th>İşlem</th>
+                                    </tr>
+                                </thead>
+                                <h5 style="color:white; padding: 3px;" class="text-center bg-primary">Toplam
+                                    kullanıcı sayısı: <%= userCount %>
+                                </h5>
+                                <tbody>
+                                    <% users.forEach(user=> { %>
+                                        <tr>
+                                            <td>
+                                                <%= user._id %>
+                                            </td>
+                                            <td>
+                                                <%= user.name %>
+                                            </td>
+                                            <td>
+                                                <%= user.email %>
+                                            </td>
+                                            <td>
+                                                <a href="/delete/user/<%= user._id %>" class="btn btn-danger">Sil</a>
+                                                <a href="/edit/user/<%= user._id %>"
+                                                    class="btn btn-primary">Güncelle</a>
+                                            </td>
+                                        </tr>
+                                        <% }) %>
+                                </tbody>
+                            </table>
+                </div>
+            </div>
+    </div>
+
+    <%- include('../partials/script') %>
+</body>
+
+</html>

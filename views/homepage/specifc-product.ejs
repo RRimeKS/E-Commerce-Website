@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<%- include('../partials/head') %>
+
+    <body>
+        <div class="container">
+            <%- include('../partials/navbar') %>
+
+                <div class="row main-area">
+                    <div class="col-lg-2 mt-3">
+                        <%- include('../partials/category-menu', categories) %>
+                    </div>
+
+                    <div class="col-lg-8 mt-3">
+                        <h1 class="text-white h2 text-center bg-primary p-2">
+                            <%= product.title %>
+                        </h1>
+                        <img class="w-100" src="/uploads/<%= product.imageCover %>">
+                        <h1 class="text-white h2 text-center bg-primary mt-2">
+                            <%= product.price %>TL
+                        </h1>
+                        <h1 class="h4">Açıklama</h1>
+                        <div class="bg-primary text-white text-center p-3">
+                            <p class="bg-primary desc">
+                                <%- product.description%>
+                            </p>
+                        </div>
+                        <% if (product.reviews.length> 0) { %>
+                            <div class="reviews mt-3">
+                                <h1 class="h4">Yorumlar</h1>
+                                <h1 class="h6">ortalama puan: <%= product.ratingsAverage %>
+                                </h1>
+
+                                <% for( let r=0; r < product.reviews.length; r++ ) { %>
+                                    <div class="bg-primary p-1 pb-2 text-white text-center mt-1">
+                                        <div class="card text-center" style="width: 18rem;">
+                                            <div class="context-wrapper">
+                                                <%= product.reviews[r].user.name %> /
+                                                    <%= (product.reviews[r].createdAt).toLocaleDateString("tr-TR") %>
+                                            </div>
+                                        </div>
+
+                                        <%= product.reviews[r].text %> </br>
+                                            puan: <%= product.reviews[r].ratings %>
+                                    </div>
+                                    <% } %>
+                                        <a href="/create/review/<%= product._id %>"
+                                            class="btn btn-primary mt-3 mb-3">Yorum
+                                            yap</a>
+                            </div>
+
+                            <% } else { %>
+                                <%- include('../partials/no-reviews') %>
+
+                                    <% } %>
+                    </div>
+
+
+
+                    <div class="col-lg-2 mt-3">
+                        <%- include('../partials/category-menu', categories) %>
+                    </div>
+                </div>
+        </div>
+    </body>
+    <%- include('../partials/script') %>
+
+</html>

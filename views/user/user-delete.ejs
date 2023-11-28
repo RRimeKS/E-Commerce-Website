@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <%- include('../partials/head') %>
+</head>
+<body>
+    <%- include('../partials/navbar') %>
+
+    <div class="container">
+        <div class="row">
+            <div class="alert alert-warning text-center mt-5">
+                <h3>!* <%= user.fullname %> *!<br></h3>
+                <p>adlı kullanıcıyı silmek üzeresiniz.</p>
+                <form method="post">
+                    <input type="hidden" name="_csrf" value="<%= csrfToken %>">
+                    <input type="hidden" name="userid" value="<%= user.id %>">
+                    <a href="/admin/users" class="btn btn-primary">Vazgeç</a>
+                    <button type="submit" class="btn btn-danger">Onayla</button>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <%- include('../partials/script') %>
+</body>
+</html>

@@ -1,0 +1,15 @@
+<div class="list-group">
+
+  <a href="/" class="list-group-item list-group-item-action <%= selectedCategory == categories._id ? " active" : "" %>">
+    Tüm kategoriler
+  </a>
+
+  <% categories.forEach(category=> { %>
+    <a href="/kategori/<%= category.slug %>"
+      class="list-group-item list-group-item-action <%= selectedCategory == category._id ? " active" : "" %>">
+      <%= category.name %>
+    </a>
+
+    <% }) %>
+
+</div>

@@ -1,0 +1,23 @@
+<div class="pagination-wrapper d-flex justify-content-center">
+    <nav aria-label="Page navigation example ">
+        <ul class="pagination">
+            <% if (currentPage> 1) { %>
+                <li class="page-item"><a class="page-link" href=<%=path+`?page=${currentPage-1}&limit=1`%>>Önceki</a>
+                    <% } %>
+                </li>
+                <% for( let i=0; i < page; i++ ) { %>
+                    <li class="page-item">
+                        <a class="page-link <%= currentPage== [i+1] ?" active":""%>"
+                            href="<%= path+`?page=${i+1}&limit=1`%>">
+                                <%= [i+1] %>
+                        </a>
+                    </li>
+                    <% } %>
+                        <% if (currentPage <page ) { %>
+                            <li class="page-item"><a class="page-link"
+                                    href=<%=path+`?page=${parseInt(currentPage)+1}&limit=1`%>>Sonraki</a>
+                            </li>
+                            <% } %>
+        </ul>
+    </nav>
+</div>

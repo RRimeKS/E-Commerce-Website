@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<%- include('../partials/head') %>
+
+    <head>
+        <style>
+            .ck-editor__editable {
+                height: 150px;
+            }
+        </style>
+    </head>
+
+    <body>
+        <div class="container">
+            <%- include('../partials/navbar') %>
+                <form method="post" enctype="multipart/form-data">
+                    <input type="hidden" name="userId" value="<%= userId %>">
+                    <div class="col-md-12 mt-5">
+                        <div class="mb-3">
+                            <label for="title" class="form-label">Ürün Başlığı</label>
+                            <input type="text" name="title" class="form-control">
+                        </div>
+
+                        <div class="mb-3">
+                            <label for="description" class="form-label">Ürün Açıklaması</label>
+                            <textarea name="description" id="editor"></textarea>
+                        </div>
+
+                        <div class="mb-3">
+                            <label for="quantity" class="form-label">Ürün Miktarı</label>
+                            <input type="number" name="quantity" class="form-control">
+                        </div>
+
+                        <div class="mb-3">
+                            <label for="price" class="form-label">Ürün Fiyatı</label>
+                            <input type="text" name="price" class="form-control">
+                        </div>
+
+                        <div class="mb-3">
+                            <label for="color" class="form-label">Ürün Rengi</label>
+                            <select class="form-select" name="color" aria-label="Default select example">
+                                <option selected>Bir renk seçiniz</option>
+                                <option value="Kırmızı">Kırmızı</option>
+                                <option value="Mavi">Mavi</option>
+                                <option value="Yeşil">Yeşil</option>
+                                <option value="Turuncu">Turuncu</option>
+                                <option value="Kahverengi">Kahverengi</option>
+                                <option value="Siyah">Siyah</option>
+                                <option value="Beyaz">Beyaz</option>
+                                <option value="Pembe">Pembe</option>
+                                <option value="Mor">Mor</option>
+                                <option value="Sarı">Sarı</option>
+                            </select>
+                        </div>
+
+                        <div class="mb-3">
+                            <select class="form-select" name="category" aria-label="Default select example">
+                                <option selected>Bir kategori seçiniz</option>
+                                <% for( let i=0; i < categories.length; i++ ) { %>
+                                    <option value="<%= categories[i]._id %>">
+                                        <%= categories[i].name %>
+                                    </option>
+                                    <% } %>
+                            </select>
+                        </div>
+
+                        <div class="mb-3">
+                            <label for="imageCover" class="form-label">Ürün Kapak resmi</label>
+                            <input type="file" name="imageCover" class="form-control">
+                        </div>
+
+                        <div class="mb-3">
+                            <label for="images" class="form-label">Ürün resimleri</label>
+                            <input type="file" name="images" class="form-control">
+                        </div>
+
+                        <div class="mb-3">
+                            <input class="btn btn-primary" type="submit" value="Ürün Oluştur">
+                        </div>
+                    </div>
+                </form>
+        </div>
+
+    </body>
+
+    <%- include('../partials/script') %>
+
+</html>

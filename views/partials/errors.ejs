@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<%- include('../partials/head') %>
+
+    <body>
+        <div class="container">
+            <%- include('../partials/navbar') %>
+                <div class="errors m-5 text-center">
+                    <h1 class="h2 mt-2">Bir hata ile karşılaşıldı. </br> Lütfen aşağıdaki uyarıları göz önüne alarak
+                        işleminizi tekrar deneyiniz.</h1>
+
+                    <% errors.forEach(error=> { %>
+                        <% if (error.msg !="Invalid value" ) { %>
+                            <div class="alert alert-warning">
+                                <b>
+                                    <%= error=error.msg %>
+                                </b>
+                            </div>
+                            <% } %>
+                                <% }) %>
+                </div>
+        </div>
+    </body>
+    <%- include('../partials/script') %>
+
+</html>
